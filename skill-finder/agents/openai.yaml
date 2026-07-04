@@ -1,0 +1,6 @@
+interface:
+  display_name: "Skill Finder"
+  short_description: "Find and rank Skills from live sources"
+  default_prompt: "Use $skill-finder to find and compare the best Skills for my task."
+policy:
+  allow_implicit_invocation: true
