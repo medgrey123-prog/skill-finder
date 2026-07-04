@@ -18,5 +18,7 @@ python3 -m py_compile skill-finder/scripts/github_skill_search.py
 ## Install Command
 
 ```bash
-python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" --repo medgrey123-prog/skill-finder --path skill-finder
+curl -fsSL https://raw.githubusercontent.com/medgrey123-prog/skill-finder/main/install.sh | bash
 ```
+
+The root `install.sh` must stay self-contained and must not depend on Codex's system skill installer being present.

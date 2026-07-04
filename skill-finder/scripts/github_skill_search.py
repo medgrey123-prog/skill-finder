@@ -11,6 +11,7 @@ import math
 import os
 import sys
 import textwrap
+from typing import List, Optional
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -20,7 +21,7 @@ API = "https://api.github.com"
 UTC = dt.timezone.utc
 
 
-def request_json(path: str, token: str | None) -> dict:
+def request_json(path: str, token: Optional[str]) -> dict:
     req = urllib.request.Request(API + path)
     req.add_header("Accept", "application/vnd.github+json")
     req.add_header("X-GitHub-Api-Version", "2022-11-28")
@@ -38,13 +39,13 @@ def request_json(path: str, token: str | None) -> dict:
         raise SystemExit(f"Network error: {exc}") from exc
 
 
-def parse_time(value: str | None) -> dt.datetime | None:
+def parse_time(value: Optional[str]) -> Optional[dt.datetime]:
     if not value:
         return None
     return dt.datetime.strptime(value, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=UTC)
 
 
-def recency_score(updated_at: str | None) -> int:
+def recency_score(updated_at: Optional[str]) -> int:
     updated = parse_time(updated_at)
     if not updated:
         return 0
@@ -111,7 +112,7 @@ def rank_repo(repo: dict, query: str) -> int:
     )
 
 
-def fetch_readme_summary(full_name: str, token: str | None) -> str:
+def fetch_readme_summary(full_name: str, token: Optional[str]) -> str:
     try:
         data = request_json(f"/repos/{full_name}/readme", token)
     except SystemExit:
@@ -127,7 +128,7 @@ def fetch_readme_summary(full_name: str, token: str | None) -> str:
     return textwrap.shorten(compact, width=220, placeholder="...")
 
 
-def search(query: str, limit: int, token: str | None, include_readme: bool) -> list[dict]:
+def search(query: str, limit: int, token: Optional[str], include_readme: bool) -> List[dict]:
     q = urllib.parse.quote(query)
     per_page = min(max(limit * 2, 10), 50)
     data = request_json(f"/search/repositories?q={q}&sort=stars&order=desc&per_page={per_page}", token)
@@ -155,7 +156,7 @@ def search(query: str, limit: int, token: str | None, include_readme: bool) -> l
     return repos[:limit]
 
 
-def print_markdown(repos: list[dict]) -> None:
+def print_markdown(repos: List[dict]) -> None:
     print("| Score | Repository | Stars | Updated | Notes |")
     print("|---:|---|---:|---|---|")
     for repo in repos:
