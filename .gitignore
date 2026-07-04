@@ -2,6 +2,7 @@
 __pycache__/
 *.pyc
 .env
+.tools/
 *.log
 node_modules/
 dist/
