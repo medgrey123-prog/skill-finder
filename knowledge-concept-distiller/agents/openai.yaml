@@ -1,0 +1,4 @@
+interface:
+  display_name: "知识概念蒸馏"
+  short_description: "Distill concepts logic methods into reusable skills"
+  default_prompt: "Use $knowledge-concept-distiller to distill a creator or expert corpus into a reusable knowledge-concept Skill."
