@@ -1,0 +1,4 @@
+interface:
+  display_name: "服装搭配师一键炸图"
+  short_description: "把人物照片生成固定 9:16 穿搭拆解图"
+  default_prompt: "Use $fashion-outfit-exploder to turn the uploaded person photo into a locked 9:16 outfit breakdown image. Ignore the source layout, keep one front-facing full-body person, and separate all visible clothing, shoes, accessories, bags, and props around the model."
