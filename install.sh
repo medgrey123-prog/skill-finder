@@ -2,7 +2,7 @@
 set -euo pipefail
 
 REPO_ZIP_URL="https://codeload.github.com/medgrey123-prog/skill-finder/zip/refs/heads/main"
-SKILL_NAMES=("skill-finder" "knowledge-concept-distiller")
+SKILL_NAMES=("skill-finder" "knowledge-concept-distiller" "methodology-allegory")
 CODEX_DIR="${CODEX_HOME:-$HOME/.codex}"
 DEST_ROOT="$CODEX_DIR/skills"
 TMP_DIR="$(mktemp -d)"
