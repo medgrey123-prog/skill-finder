@@ -1,0 +1,4 @@
+interface:
+  display_name: "寓言式方法论解释器"
+  short_description: "Turn abstract methodologies into suspenseful allegories"
+  default_prompt: "Use $methodology-allegory to explain this concept through an engaging allegory. Let me build intuition first, delay the professional term until near the end, and preserve the anomaly-to-reframing learning process."
