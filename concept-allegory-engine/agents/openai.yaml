@@ -1,0 +1,4 @@
+interface:
+  display_name: "概念寓言生成器"
+  short_description: "Turn theories into intuitive allegorical stories"
+  default_prompt: "Use $concept-allegory-engine to transform this abstract concept into an allegory. Let the reader discover the mechanism first and reveal the formal concept near the end."
